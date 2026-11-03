@@ -1,0 +1,148 @@
+@import 'tailwindcss';
+
+@source '../views/**/*.blade.php';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Emil Kowalski Spring Physics & Micro-interaction Utilities */
+.spring-transition {
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.18s ease-out,
+                background-color 0.18s ease-out,
+                color 0.18s ease-out;
+}
+
+.press-trigger {
+    transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.press-trigger:active {
+    transform: scale(0.98);
+}
+
+/* Refined Subtle Card Shadow */
+.card-subtle {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.02);
+}
+
+.card-subtle-hover:hover {
+    box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.06), 0 4px 10px -4px rgba(0, 0, 0, 0.03);
+}
+
+/* Shadcn Specialtive Glossy Bright Blue Button */
+.btn-specialtive {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    white-space: nowrap;
+    outline: none;
+    user-select: none;
+    border: 0;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    gap: 0.5rem;
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(180deg, #38BDF8 0%, #2563EB 50%, #1D4ED8 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 16px -4px rgba(29, 78, 216, 0.45);
+    box-sizing: border-box;
+}
+
+.btn-specialtive:hover {
+    background: linear-gradient(180deg, #60A5FA 0%, #3B82F6 50%, #2563EB 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 10px 20px -4px rgba(29, 78, 216, 0.55);
+}
+
+.btn-specialtive:active {
+    transform: translateY(1px);
+    background: linear-gradient(180deg, #2563EB 0%, #1D4ED8 50%, #1E3A8A 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 8px -2px rgba(29, 78, 216, 0.4);
+}
+
+.btn-specialtive:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: not-allowed;
+    background: #94a3b8;
+    box-shadow: none;
+}
+
+/* Morphing Dynamic Navbar: Top (Kotak Edge-to-Edge) vs Scrolled (Floating Pill Island) */
+.morph-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    top: 0;
+    transition: top 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.3s ease,
+                border-color 0.3s ease;
+    transform: translateZ(0);
+    will-change: top, padding, background-color, border-color;
+}
+
+.morph-header.is-scrolled {
+    top: 0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    background-color: transparent !important;
+    border-bottom-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    pointer-events: none;
+}
+
+@media (min-width: 640px) {
+    .morph-header.is-scrolled {
+        top: 1rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.morph-container {
+    border: 1px solid transparent;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    transition: max-width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                border-radius 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateZ(0);
+    will-change: max-width, border-radius, padding, box-shadow, background-color, border-color;
+}
+
+.morph-header.is-scrolled .morph-container {
+    pointer-events: auto;
+    max-width: 880px; /* Jelas menciut membentuk floating pill island di tengah */
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(203, 213, 225, 0.85);
+    box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.16), 0 4px 12px -2px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+@media (max-width: 767px) {
+    .morph-header.is-scrolled .morph-container {
+        max-width: 32rem;
+        border-radius: 9999px;
+        padding-top: 0.45rem;
+        padding-bottom: 0.45rem;
+        padding-left: 1.15rem;
+        padding-right: 1.15rem;
+    }
+}
